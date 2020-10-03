@@ -1,21 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NativeRouter, Switch, Route } from "react-router-native";
+import Weeks from "./src/screens/Weeks";
+import InfoApp from "./src/screens/InfoApp";
+import Ranking from "./src/screens/Ranking";
+import Register from "./src/screens/Register";
+import Login from "./src/screens/Login";
+import Layout from "./src/components/Layout";
+import PreguntasSemana from "./src/screens/PreguntasSemana";
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeRouter>
+      <Switch>
+        <Route
+          exact
+          path="/preguntas-semana/:numero"
+          component={PreguntasSemana}
+        />
+        <Route exact path="/" component={Register} />
+        <Route exact path="/login" component={Login} />
+        <Layout>
+          <Route exact path="/weeks" component={Weeks} />
+          <Route exact path="/info" component={InfoApp} />
+          <Route exact path="/ranking" component={Ranking} />
+        </Layout>
+      </Switch>
+    </NativeRouter>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
