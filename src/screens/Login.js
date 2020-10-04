@@ -48,8 +48,9 @@ const Login = () => {
 
   const PostData = async () => {
     setLoading(true);
+
     await axios
-      .post("http://161.35.9.64/usuario/ingreso", {
+      .post("http://192.168.1.17:4000/usuario/ingreso", {
         email: correo.toLowerCase(),
         contrasenia: contraseña,
       })
@@ -102,6 +103,7 @@ const Login = () => {
           { cancelable: false }
         );
       });
+
     setLoading(false);
   };
 

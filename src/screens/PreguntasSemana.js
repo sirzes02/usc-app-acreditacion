@@ -79,7 +79,7 @@ const PreguntasSemana = ({ match }) => {
 
   const GetUserResueltas = async () =>
     await axios
-      .get("http://161.35.9.64/usuario/resueltas", {
+      .get("http://192.168.1.17:4000/usuario/resueltas", {
         email: correo,
       })
       .then((response) => {
@@ -103,7 +103,7 @@ const PreguntasSemana = ({ match }) => {
 
   const PostResuelta = async (id, state) =>
     await axios
-      .put("http://161.35.9.64/usuario/resueltas", {
+      .put("http://192.168.1.17:4000/usuario/resueltas", {
         email: correo,
         resueltas: {
           id: id,

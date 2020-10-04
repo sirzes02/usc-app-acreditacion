@@ -63,9 +63,9 @@ const Register = () => {
   const elegirAvatar = (n) => {
     setAvatar(n);
 
-    const ArrayModificado = avatarOpacity.map((style, index) => {
-      return n - 1 !== index ? styles.avatarImgOpacity : styles.avatarImg;
-    });
+    const ArrayModificado = avatarOpacity.map((style, index) =>
+      n - 1 !== index ? styles.avatarImgOpacity : styles.avatarImg
+    );
 
     setAvatarOpacity(ArrayModificado);
   };
@@ -102,7 +102,7 @@ const Register = () => {
     setLoading(true);
 
     await axios
-      .post("http://161.35.9.64/usuario/registro", {
+      .post("http://192.168.1.17:4000/usuario/registro", {
         cedula: cedula,
         email: correo.toLowerCase(),
         avatar: avatar,
@@ -110,6 +110,7 @@ const Register = () => {
         contrasenia: contraseña,
         programa: programa,
         facultad: facultad,
+        tipo: "estudiante",
       })
       .then((response) => {
         const data = response.data;
@@ -118,7 +119,7 @@ const Register = () => {
           console.log("Registered");
 
           axios
-            .post("http://161.35.9.64/usuario/ingreso", {
+            .post("http://192.168.1.17:4000/usuario/ingreso", {
               email: correo.toLowerCase(),
               contrasenia: contraseña,
             })
@@ -172,7 +173,8 @@ const Register = () => {
             );
           }
         }
-      });
+      })
+      .catch((err) => console.log(err));
 
     setLoading(false);
   };
