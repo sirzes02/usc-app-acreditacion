@@ -102,7 +102,7 @@ const Register = () => {
     setLoading(true);
 
     await axios
-      .post("http://192.168.1.17:4000/usuario/registro", {
+      .post("http://192.168.1.17:8000/students/register", {
         cedula: cedula,
         email: correo.toLowerCase(),
         avatar: avatar,
@@ -116,15 +116,13 @@ const Register = () => {
         const data = response.data;
 
         if (data.status === `${correo.toLowerCase()} registrado con exito!`) {
-          console.log("Registered");
-
           axios
-            .post("http://192.168.1.17:4000/usuario/ingreso", {
+            .post("http:/192.168.1.17:8000/students/login", {
               email: correo.toLowerCase(),
               contrasenia: contraseña,
             })
             .then((response) => {
-              AsyncStorage.setItem("usertoken", response.data);
+              AsyncStorage.setItem("usertoken", JSON.stringify(data));
               history.push("/Weeks");
 
               return response.data;
@@ -173,6 +171,8 @@ const Register = () => {
             );
           }
         }
+
+        console.log("PET");
       })
       .catch((err) => console.log(err));
 

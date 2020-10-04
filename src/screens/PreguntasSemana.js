@@ -70,16 +70,17 @@ const PreguntasSemana = ({ match }) => {
 
   const DatosToken = async () => {
     const token = await AsyncStorage.getItem("usertoken");
+
     if (token !== null) {
-      const decoded = jwt_decode(token);
-      setCorreo(decoded.cedula);
+      const prueba = JSON.parse(token);
+      setCorreo(prueba.cedula);
       GetUserResueltas();
     }
   };
 
   const GetUserResueltas = async () =>
     await axios
-      .get("http://192.168.1.17:4000/usuario/resueltas", {
+      .get("http:/192.168.1.17:8000/students/resueltas", {
         email: correo,
       })
       .then((response) => {
@@ -103,7 +104,7 @@ const PreguntasSemana = ({ match }) => {
 
   const PostResuelta = async (id, state) =>
     await axios
-      .put("http://192.168.1.17:4000/usuario/resueltas", {
+      .put("http:/192.168.1.17:8000/students/resueltasUpdate", {
         email: correo,
         resueltas: {
           id: id,

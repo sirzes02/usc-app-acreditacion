@@ -50,43 +50,31 @@ const Login = () => {
     setLoading(true);
 
     await axios
-      .post("http://192.168.1.17:4000/usuario/ingreso", {
+      .post("http:/192.168.1.17:8000/students/login", {
         email: correo.toLowerCase(),
         contrasenia: contraseña,
       })
       .then((response) => {
         const data = response.data;
 
-        if (data.error) {
-          if (data.error === "El usuario no existe...") {
-            Alert.alert(
-              "Error",
-              "El correo o la contraseña es incorrecto.",
-              [
-                {
-                  text: "Aceptar",
-                  onPress: () => {},
-                },
-              ],
-              { cancelable: false }
-            );
-          } else {
-            Alert.alert(
-              "Error",
-              "Ocurrió un error al iniciar sesión por favor intenta mas tarde.",
-              [
-                {
-                  text: "Aceptar",
-                  onPress: () => {},
-                },
-              ],
-              { cancelable: false }
-            );
-          }
+        console.log(data);
+
+        if (!data.ingreso) {
+          Alert.alert(
+            "Error",
+            "El correo o la contraseña es incorrecto.",
+            [
+              {
+                text: "Aceptar",
+                onPress: () => {},
+              },
+            ],
+            { cancelable: false }
+          );
         } else {
-          AsyncStorage.setItem("usertoken", response.data);
+          AsyncStorage.setItem("usertoken", JSON.stringify(data));
           history.push("/Weeks");
-          return response.data;
+          return data;
         }
       })
       .catch((err) => {

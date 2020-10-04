@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import styles from "../styles";
 import Semana from "../components/Semana";
-import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-native";
 
 const Weeks = () => {
@@ -34,11 +33,11 @@ const Weeks = () => {
 
   const DatosToken = async () => {
     const token = await AsyncStorage.getItem("usertoken");
+    const prueba = JSON.parse(token);
 
     if (token !== null) {
-      const decoded = jwt_decode(token);
-      setName(decoded.nombre);
-      setAvatar(decoded.avatar);
+      setName(prueba.nombre);
+      setAvatar(prueba.avatar);
     }
   };
 
