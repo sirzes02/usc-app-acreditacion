@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import styles from "../styles";
-import ItemRanking from "../components/ItemRanking";
+import ItemRanking from "../Components/ItemRanking";
 
 const Ranking = () => {
   const Colors = [

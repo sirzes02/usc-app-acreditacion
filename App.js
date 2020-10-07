@@ -5,7 +5,7 @@ import InfoApp from "./src/screens/InfoApp";
 import Ranking from "./src/screens/Ranking";
 import Register from "./src/screens/Register";
 import Login from "./src/screens/Login";
-import Layout from "./src/components/Layout";
+import Layout from "./src/Components/Layout";
 import PreguntasSemana from "./src/screens/PreguntasSemana";
 
 const App = () => {

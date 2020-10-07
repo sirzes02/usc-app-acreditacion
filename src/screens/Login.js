@@ -12,7 +12,7 @@ import styles from "../styles";
 import {
   handleAndroidBackButton,
   removeAndroidBackButtonHandler,
-} from "../components/androidBackButton";
+} from "../Components/androidBackButton";
 import axios from "axios";
 import { useHistory } from "react-router-native";
 

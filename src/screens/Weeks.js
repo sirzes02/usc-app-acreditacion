@@ -8,7 +8,7 @@ import {
   Alert,
 } from "react-native";
 import styles from "../styles";
-import Semana from "../components/Semana";
+import Semana from "../Components/Semana";
 import { useHistory } from "react-router-native";
 
 const Weeks = () => {

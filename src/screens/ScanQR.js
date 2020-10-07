@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Button, Dimensions } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import Informacion from "../models/informacion/Informacion";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 
 const ScanQR = () => {
   const [setHasPermission] = useState(null);

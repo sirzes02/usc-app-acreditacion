@@ -15,7 +15,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import {
   handleAndroidBackButton,
   removeAndroidBackButtonHandler,
-} from "../components/androidBackButton";
+} from "../Components/androidBackButton";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
